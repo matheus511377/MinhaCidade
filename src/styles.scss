@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; background-color: #212529b8; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn_black{
+    
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #212121;
+    --bs-btn-border-color: #212121;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #212121d7;
+    --bs-btn-hover-border-color: #212121d7;
+    --bs-btn-focus-shadow-rgb: 130, 138, 145;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #212121d7;
+    --bs-btn-active-border-color: #212121d7;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #212121;
+    --bs-btn-disabled-border-color: #212121;
+}

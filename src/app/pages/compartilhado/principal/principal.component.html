@@ -1,0 +1,34 @@
+<p>
+  <mat-toolbar style="height: 80px;" color="#212529">
+    
+    <div style="margin-right: 12px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Bras%C3%A3o_de_Igrejinha.svg/1395px-Bras%C3%A3o_de_Igrejinha.svg.png" width="50px" >         
+    </div> 
+    <span>Minha Cidade</span>
+    <span class="espacamento-toolbar"></span>
+    <div class="dropdown">
+      <button  mat-icon-button type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="40px" >         
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <div class="row px-4 py-1">
+          <button type="button" class="btn btn_black " >Solicitar Mudanças</button>
+        </div>
+        <div class="row px-4 py-1">
+          <button type="button" class="btn btn_black " >Minhas Solicitações</button>
+        </div>
+        <div class="row px-4 py-1">
+          <button type="button" class="btn btn_black " >Meu Perfil</button>
+        </div>
+        <div class="row px-4 py-1">
+          <button type="button" class="btn btn_black "  (click)="deslogar()" >Sair</button>
+        </div>
+        
+      </div>
+    </div>
+  </mat-toolbar>
+</p>
+
+<mat-card-content>
+  <router-outlet></router-outlet>
+</mat-card-content>
