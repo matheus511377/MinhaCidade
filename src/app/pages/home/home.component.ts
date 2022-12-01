@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit {
         duration: 3000
       });
   
-      this.reload();
+      //this.reload();
       this.closeComentarioPopup();
     });
   };
@@ -173,18 +173,25 @@ export class HomeComponent implements OnInit {
       this.snackBar.open('Finalizado', 'Projeto finalizado', {
         duration: 3000
       });
-      this.reload();
+      //this.reload();
     });
   }
 
   pendente(){
-
+    this.appService.listarPosts().subscribe(x=>{
+      this.posts = x;
+      console.log(x);
+    })
   }
   fazendo(){
-
+    this.appService.listarPostsFazendo().subscribe(x=>{
+      this.posts = x;
+    })
   }
   finalizado(){
-    
+    this.appService.listarPostsFconcluidos().subscribe(x=>{
+      this.posts = x;
+    })
   }
   
 

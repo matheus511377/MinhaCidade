@@ -63,5 +63,16 @@ export class AppService {
     return this.http.put(this.baseURL + '/projects/'+ idProjeto ,{'status': 'completed', 'description': descricao,'postId':idPost, 'image': image},{ headers: this.httpHeaders })
   }
 
+  listarPostsPendentes(): Observable<any>{
+    return this.http.get(this.baseURL + '/posts?status=pending',{ headers: this.httpHeaders })
+  }
+  listarPostsFazendo(): Observable<any>{
+    return this.http.get(this.baseURL + '/posts?status=pending',{ headers: this.httpHeaders })
+  }
+  listarPostsFconcluidos(): Observable<any>{
+    return this.http.get(this.baseURL + '/posts?status=completed',{ headers: this.httpHeaders })
+  }
+
+
  
 }
