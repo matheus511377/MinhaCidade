@@ -1,0 +1,72 @@
+<mat-card-content class="container">
+
+  <mat-card class="card-login">    
+    <form [formGroup]="formLogin" novalidate>
+
+      <mat-card-content class="conteudo-login">
+        <div class="d-flex justify-content-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Bras%C3%A3o_de_Igrejinha.svg/1395px-Bras%C3%A3o_de_Igrejinha.svg.png" width="150px" >         
+        </div>
+        
+        <mat-form-field appearance="outline" class="form-field-full mt-3">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput formControlName="name" placeholder="joao">
+          <mat-error *ngIf="formLogin.get('name').hasError('name') && formLogin.get('name').touched">
+            <strong>Obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-full mt-3">
+         
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="Ex. email@example.com">
+          <mat-error *ngIf="formLogin.get('email').hasError('email') && formLogin.get('email').touched">
+            Por favor informe um email válido
+          </mat-error>
+          <mat-error *ngIf="formLogin.get('email').hasError('required') && formLogin.get('email').touched">
+            Email é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-full">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-error *ngIf="formLogin.get('password').invalid && formLogin.get('password').touched">Senha é
+            <strong>obrigatória</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-full mt-3">
+          <mat-label>Data de nascimento</mat-label>
+          <input type="date" matInput formControlName="birthdate" placeholder="28/05/1997">
+          <mat-error *ngIf="formLogin.get('birthdate').hasError('birthdate') && formLogin.get('birthdate').touched">
+            <strong>Obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-full mt-3">
+          <mat-label>Telefone</mat-label>
+          <input type="number" matInput formControlName="phone" placeholder="51998430740">
+          <mat-error *ngIf="formLogin.get('phone').hasError('phone') && formLogin.get('phone').touched">
+            <strong>Obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field-full mt-3">
+          <mat-label>Endereço</mat-label>
+          <input type="text" matInput formControlName="address" placeholder="Rua teste">
+          <mat-error *ngIf="formLogin.get('address').hasError('address') && formLogin.get('address').touched">
+            <strong>Obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+
+      </mat-card-content>
+
+    </form>
+    <div class="row px-3 mt-2">
+      <button type="button" (click)="cadastrar()" class="btn btn-primary">cadastrar</button>
+    </div>
+
+  </mat-card>
+
+</mat-card-content>

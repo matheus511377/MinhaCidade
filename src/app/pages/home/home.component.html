@@ -1,159 +1,21 @@
 <div class="col-12">
+
     <div class="row">
-        <div class="col-sm-6 col-lg-4">
-          <div class="card">
+        <div  class="col-sm-6 col-lg-4" *ngFor="let post of posts; index as i;">
+          <div (click)="openModal(post.id);" class="card">
             <div class="card-body">
               <div>
-                <img align="left" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="mr-2" width="60px" >
-                <p align="justify" class="card-text"> O incentivo ao avanço tecnológico, assim como a execução dos pontos do programa pode nos levar a considerar a reestruturação das condições financeiras e administrativas exigidas. Desta maneira, o início da atividade geral de formação de atitudes maximiza as possibilidades por conta da gestão inovadora da qual fazemos parte. Pensando mais a longo prazo, a contínua expansão de nossa atividade exige a precisão e a definição de todos os recursos funcionais envolvidos. Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a estrutura atual da organização prepara-nos para enfrentar situações atípicas decorrentes de alternativas às soluções ortodoxas.</p>
+                <img align="left" [src]="post.user?.profileImage | safe" class="mr-2" width="60px" >
+                <p align="justify" class="card-text"><b>{{post.title}} </b> {{post.description}}</p>
              </div>
              <div class="row mt-2">
-                <div class="col-6"><img style="max-width:100%;" src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-                <div class="col-6"><img style="max-width:100%;"src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-              </div>
-              <div class="row mt-4">
-                <div class="d-flex justify-content-center align-items-center">
-                  <i style="font-size:26px;" class="bi bi-heart mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-chat mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-share" ></i>
-                </div>
+                <div class="col-12 d-flex justify-content-center"><img style="max-width:100%; width: 400px; height: 400;" [src]="post.image | safe"  ></div>
                 
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <div>
-                <img align="left" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="mr-2" width="60px" >
-                <p align="justify" class="card-text"> O incentivo ao avanço tecnológico, assim como a execução dos pontos do programa pode nos levar a considerar a reestruturação das condições financeiras e administrativas exigidas. Desta maneira, o início da atividade geral de formação de atitudes maximiza as possibilidades por conta da gestão inovadora da qual fazemos parte. Pensando mais a longo prazo, a contínua expansão de nossa atividade exige a precisão e a definição de todos os recursos funcionais envolvidos. Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a estrutura atual da organização prepara-nos para enfrentar situações atípicas decorrentes de alternativas às soluções ortodoxas.</p>
-             </div>
-             <div class="row mt-2">
-                <div class="col-6"><img style="max-width:100%;" src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-                <div class="col-6"><img style="max-width:100%;"src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
               </div>
               <div class="row mt-4">
                 <div class="d-flex justify-content-center align-items-center">
-                  <i style="font-size:26px;" class="bi bi-heart mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-chat mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-share" ></i>
-                </div>
-                
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <div>
-                <img align="left" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="mr-2" width="60px" >
-                <p align="justify" class="card-text"> O incentivo ao avanço tecnológico, assim como a execução dos pontos do programa pode nos levar a considerar a reestruturação das condições financeiras e administrativas exigidas. Desta maneira, o início da atividade geral de formação de atitudes maximiza as possibilidades por conta da gestão inovadora da qual fazemos parte. Pensando mais a longo prazo, a contínua expansão de nossa atividade exige a precisão e a definição de todos os recursos funcionais envolvidos. Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a estrutura atual da organização prepara-nos para enfrentar situações atípicas decorrentes de alternativas às soluções ortodoxas.</p>
-             </div>
-             <div class="row mt-2">
-                <div class="col-6"><img style="max-width:100%;" src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-                <div class="col-6"><img style="max-width:100%;"src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-              </div>
-              <div class="row mt-4">
-                <div class="d-flex justify-content-center align-items-center">
-                  <i style="font-size:26px;" class="bi bi-heart mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-chat mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-share" ></i>
-                </div>
-                
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <div>
-                <img align="left" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="mr-2" width="60px" >
-                <p align="justify" class="card-text"> O incentivo ao avanço tecnológico, assim como a execução dos pontos do programa pode nos levar a considerar a reestruturação das condições financeiras e administrativas exigidas. Desta maneira, o início da atividade geral de formação de atitudes maximiza as possibilidades por conta da gestão inovadora da qual fazemos parte. Pensando mais a longo prazo, a contínua expansão de nossa atividade exige a precisão e a definição de todos os recursos funcionais envolvidos. Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a estrutura atual da organização prepara-nos para enfrentar situações atípicas decorrentes de alternativas às soluções ortodoxas.</p>
-             </div>
-             <div class="row mt-2">
-                <div class="col-6"><img style="max-width:100%;" src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-                <div class="col-6"><img style="max-width:100%;"src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-              </div>
-              <div class="row mt-4">
-                <div class="d-flex justify-content-center align-items-center">
-                  <i style="font-size:26px;" class="bi bi-heart mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-chat mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-share" ></i>
-                </div>
-                
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <div>
-                <img align="left" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="mr-2" width="60px" >
-                <p align="justify" class="card-text"> O incentivo ao avanço tecnológico, assim como a execução dos pontos do programa pode nos levar a considerar a reestruturação das condições financeiras e administrativas exigidas. Desta maneira, o início da atividade geral de formação de atitudes maximiza as possibilidades por conta da gestão inovadora da qual fazemos parte. Pensando mais a longo prazo, a contínua expansão de nossa atividade exige a precisão e a definição de todos os recursos funcionais envolvidos. Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a estrutura atual da organização prepara-nos para enfrentar situações atípicas decorrentes de alternativas às soluções ortodoxas.</p>
-             </div>
-             <div class="row mt-2">
-                <div class="col-6"><img style="max-width:100%;" src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-                <div class="col-6"><img style="max-width:100%;"src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-              </div>
-              <div class="row mt-4">
-                <div class="d-flex justify-content-center align-items-center">
-                  <i style="font-size:26px;" class="bi bi-heart mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-chat mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-share" ></i>
-                </div>
-                
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <div>
-                <img align="left" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="mr-2" width="60px" >
-                <p align="justify" class="card-text"> O incentivo ao avanço tecnológico, assim como a execução dos pontos do programa pode nos levar a considerar a reestruturação das condições financeiras e administrativas exigidas. Desta maneira, o início da atividade geral de formação de atitudes maximiza as possibilidades por conta da gestão inovadora da qual fazemos parte. Pensando mais a longo prazo, a contínua expansão de nossa atividade exige a precisão e a definição de todos os recursos funcionais envolvidos. Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a estrutura atual da organização prepara-nos para enfrentar situações atípicas decorrentes de alternativas às soluções ortodoxas.</p>
-             </div>
-             <div class="row mt-2">
-                <div class="col-6"><img style="max-width:100%;" src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-                <div class="col-6"><img style="max-width:100%;"src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-              </div>
-              <div class="row mt-4">
-                <div class="d-flex justify-content-center align-items-center">
-                  <i style="font-size:26px;" class="bi bi-heart mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-chat mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-share" ></i>
-                </div>
-                
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <div>
-                <img align="left" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="mr-2" width="60px" >
-                <p align="justify" class="card-text"> O incentivo ao avanço tecnológico, assim como a execução dos pontos do programa pode nos levar a considerar a reestruturação das condições financeiras e administrativas exigidas. Desta maneira, o início da atividade geral de formação de atitudes maximiza as possibilidades por conta da gestão inovadora da qual fazemos parte. Pensando mais a longo prazo, a contínua expansão de nossa atividade exige a precisão e a definição de todos os recursos funcionais envolvidos. Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a estrutura atual da organização prepara-nos para enfrentar situações atípicas decorrentes de alternativas às soluções ortodoxas.</p>
-             </div>
-             <div class="row mt-2">
-                <div class="col-6"><img style="max-width:100%;" src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-                <div class="col-6"><img style="max-width:100%;"src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/3nrpyxb6niw4c.jpg"  ></div>
-              </div>
-              <div class="row mt-4">
-                <div class="d-flex justify-content-center align-items-center">
-                  <i style="font-size:26px;" class="bi bi-heart mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-chat mr-4" ></i>
-                  <i style="font-size:26px;" class="bi bi-share" ></i>
+                  <p (click)="curtir(post)" style="font-size: 12px;">{{post.upvoteCount}}<i style="font-size:26px;" class="bi bi-heart mr-4" ></i></p>
+                  <p style="font-size: 12px;">   {{post.commentsCount}}<i style="font-size:26px;" class="bi bi-chat mr-4" ></i></p>
                 </div>
                 
 
@@ -162,6 +24,36 @@
           </div>
         </div>
         
+        
       </div>
    
+</div>
+
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div style="background-color: #212529; color: #FFF;" class="modal-content">
+      <div  class="modal-header">
+        <h4  class="modal-title"> <img align="left" [src]="postUnico?.user?.profileImage | safe" class="mr-2" width="60px" >{{postUnico?.title}}</h4>
+      </div>
+      <div class="modal-body justify-content-center">
+        <p>{{postUnico?.description}}</p>
+        <div class="row d-flex justify-content-center align-items-center" *ngFor="let comment of postUnico?.comments; index as i;">
+          <h4><img align="left" [src]="comment?.userProfileImage | safe" class="mr-2" width="60px" > {{comment?.description}}</h4>
+        </div>
+      </div>
+      <div class="modal-footer">
+        
+
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

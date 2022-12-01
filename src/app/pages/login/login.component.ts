@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { AppService } from 'src/app/app.service';
 import { IUsuario } from '../../interfaces/IUsuario';
 import { UsuarioService } from '../../services/usuario.service';
 
@@ -14,7 +17,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private usuarioService: UsuarioService,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar,
+              private appService: AppService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -27,16 +32,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  cadastrar(){
+    this.router.navigate(['cadastrarUsuario']);
+  }
+
   logar(){
     if(this.formLogin.invalid) return;
-
     var usuario = this.formLogin.getRawValue() as IUsuario;
-    this.usuarioService.logar(usuario).subscribe((response) => {
-        if(!response.sucesso){
-          this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
-            duration: 3000
-          });
-        }
-    })
+  
+      this.appService.login(usuario).subscribe(x=>{
+        localStorage.setItem('token',x.token); 
+        localStorage.setItem('user',JSON.stringify(x.user)); 
+        this.router.navigate(['']);
+      }, err=>{
+        this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
+          duration: 3000
+        });
+      })
   }
 }

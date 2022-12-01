@@ -18,13 +18,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TokenInterceptor } from './services/interceptors/token.interceptor';
+import { AppService } from './app.service';
+import { CadastrarUsuarioComponent } from './pages/login/cadastrar/cadastrarlogin.component';
+import { SafePipe } from './pages/home/safe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    CadastrarUsuarioComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ import { TokenInterceptor } from './services/interceptors/token.interceptor';
     MatSnackBarModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    AppService
   ],
   bootstrap: [AppComponent]
 })
