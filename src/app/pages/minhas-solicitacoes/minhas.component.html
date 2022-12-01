@@ -1,0 +1,103 @@
+<div class="col-12">
+  
+ >
+    <div class="row">
+      <div class="card-group">
+        <div  class="col-sm-6 col-lg-4" *ngFor="let post of posts; index as i;">
+          <div  class="card">
+            <div class="card-body">
+              <div>
+                <img  (click)="openModal(post.id);" align="left" [src]="post.user?.profileImage | safe" class="mr-2" width="60px" >
+                <p  (click)="openModal(post.id);" align="justify" class="card-text"><b>{{post.title}} </b> {{post.description}}</p>
+             </div>
+             <div class="row mt-2">
+                <div  (click)="openModal(post.id);" class="col-12 d-flex justify-content-center"><img style="max-width:100%; width: 400px; height: 400;" [src]="post.image | safe"  ></div>
+                
+              </div>
+              <div class="row mt-4">
+                <div class="d-flex justify-content-center align-items-center">
+                  <p (click)="curtir(post)" style="font-size: 12px;">{{post.upvoteCount}}<i style="font-size:26px;" class="bi bi-heart mr-4" ></i></p>
+                  <p (click)="openComentarioModal(post.id)" style="font-size: 12px;">   {{post.commentsCount}}<i style="font-size:26px;" class="bi bi-chat mr-4" ></i></p>
+                </div>
+                
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+        
+        
+      </div>
+   
+</div>
+
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog modal-lg " role="document">
+    <div style="background-color: #212529; color: #FFF;" class="modal-content">
+      <div  class="modal-header">
+        <h4  class="modal-title"> <img align="left" [src]="postUnico?.user?.profileImage | safe" class="mr-2" width="60px" >{{postUnico?.title}}</h4>
+      </div>
+      <div class="modal-body justify-content-center">
+        <p>{{postUnico?.description}}</p>
+
+        <div class="col-12  mb-4 d-flex justify-content-center"><img style="max-width:100%; width: 400px; height: 400;" [src]="postUnico?.image | safe"  ></div>
+
+        <div class="row d-flex justify-content-center align-items-center" *ngFor="let comment of postUnico?.comments; index as i;">
+          
+          <h4><img align="left" [src]="comment?.userProfileImage | safe" class="mr-2" width="30px" > {{comment?.description}}</h4>
+        </div>
+      </div>
+      <div class="modal-footer">
+        
+
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':comentario}">
+  <div class="modal-dialog modal-lg " role="document">
+    <div style="background-color: #212529; color: #FFF;" class="modal-content">
+      <div  class="modal-header">
+        <h4  class="modal-title"> Comentar</h4>
+      </div>
+      <div class="modal-body justify-content-center">
+        <div>
+        <form [formGroup]="formComentario" novalidate>
+        <mat-form-field appearance="outline" class="form-field-full col-12 mt-3">
+          <mat-label>Descrição</mat-label>
+          <textarea formControlName="description" rows="5" placeholder="Apareceu um buraco aqui no meio da minha rua" matInput></textarea>
+          <mat-error *ngIf="formComentario.get('description').hasError('description') && formComentario.get('description').touched">
+            <strong>Obrigatório</strong>
+          </mat-error>
+          
+          
+        </mat-form-field>
+      </form>
+      
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary"    (click)="postar()">Postar </button>
+        <button type="button" class="btn btn-secondary"                 (click)="closeComentarioPopup()">          Close        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

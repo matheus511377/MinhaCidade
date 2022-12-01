@@ -43,7 +43,13 @@ export class LoginComponent implements OnInit {
       this.appService.login(usuario).subscribe(x=>{
         localStorage.setItem('token',x.token); 
         localStorage.setItem('user',JSON.stringify(x.user)); 
-        this.router.navigate(['']);
+        if(x.user.role.id ==2){
+          this.router.navigate(['admin']);
+        }
+        else{
+          this.router.navigate(['']);
+        }
+        
       }, err=>{
         this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
           duration: 3000

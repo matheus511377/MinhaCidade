@@ -6,17 +6,17 @@ import { AppService } from 'src/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-principal',
-  templateUrl: './principal.component.html',
-  styleUrls: ['./principal.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class PrincipalComponent implements OnInit {
+export class AdminComponent implements OnInit {
   userImage: SafeResourceUrl;
   formLogin: FormGroup;
   cadastrar = "none";
   image:string|ArrayBuffer;
   user = JSON.parse(localStorage.getItem('user'));
-  
+
   constructor(private usuarioService: UsuarioService,
     private _sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,

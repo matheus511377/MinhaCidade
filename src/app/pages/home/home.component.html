@@ -1,21 +1,56 @@
-<div class="col-12">
 
-    <div class="row">
+
+<div class="col-12">
+  <div class="col-12  mb-1 d-flex justify-content-center">
+
+  
+    <button type="button" style="background-color: #FFF;" class="btn  mr-4" (click)="pendente()" > Pendentes </button>
+    <button type="button" style="background-color: #FFF;" class="btn  mr-4" (click)="fazendo()" > Fazendo </button>
+    <button type="button"  style="background-color: #FFF;"class="btn  m4-4" (click)="finalizado()"> Finalizado </button>
+  </div>
+    <div *ngIf="isAdmin" class="row">
+
+      <div class="">
+        <div  class="col-sm-12 col-lg-12" *ngFor="let post of posts; index as i;">
+          <div class="card ">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-10 col-lg-10">
+                  <img  (click)="openModal(post.id);" align="left" [src]="post.user?.profileImage | safe" class="mr-2" width="60px" >
+                  <p  (click)="openModal(post.id);" align="justify" class="card-text"><b>{{post.title}} </b> {{post.upvoteCount}}  <i class="bi bi-heart mr-1" ></i> {{post.commentsCount}}  <i  class="bi bi-chat mr-1" ></i> {{post.description}} - </p>
+                </div>
+                <div class="col-sm-2 col-lg-2 d-flex flex-column ">
+                  <button type="button" *ngIf="post.project == null" class="btn btn-primary mb-2" (click)="iniciar(post)"> Iniciar </button>
+                  <button type="button" *ngIf="post.project !== null && post.project?.status !=='completed' "class="btn btn-secondary mb-2" (click)="atualizar(post)"> Atualizar </button>
+                  <button type="button" *ngIf="post.project !== null && post.project?.status !=='completed' "class="btn btn-primary mb-2" (click)="finalizar(post)"> Finalizar </button>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+
+    <div *ngIf="!isAdmin" class="row">
+      <div class="card-group">
         <div  class="col-sm-6 col-lg-4" *ngFor="let post of posts; index as i;">
-          <div (click)="openModal(post.id);" class="card">
+          <div  class="card">
             <div class="card-body">
               <div>
-                <img align="left" [src]="post.user?.profileImage | safe" class="mr-2" width="60px" >
-                <p align="justify" class="card-text"><b>{{post.title}} </b> {{post.description}}</p>
+                <img  (click)="openModal(post.id);" align="left" [src]="post.user?.profileImage | safe" class="mr-2" width="60px" >
+                <p  (click)="openModal(post.id);" align="justify" class="card-text"><b>{{post.title}} </b> {{post.description}}</p>
              </div>
              <div class="row mt-2">
-                <div class="col-12 d-flex justify-content-center"><img style="max-width:100%; width: 400px; height: 400;" [src]="post.image | safe"  ></div>
+                <div  (click)="openModal(post.id);" class="col-12 d-flex justify-content-center"><img style="max-width:100%; width: 400px; height: 400;" [src]="post.image | safe"  ></div>
                 
               </div>
               <div class="row mt-4">
                 <div class="d-flex justify-content-center align-items-center">
                   <p (click)="curtir(post)" style="font-size: 12px;">{{post.upvoteCount}}<i style="font-size:26px;" class="bi bi-heart mr-4" ></i></p>
-                  <p style="font-size: 12px;">   {{post.commentsCount}}<i style="font-size:26px;" class="bi bi-chat mr-4" ></i></p>
+                  <p (click)="openComentarioModal(post.id)" style="font-size: 12px;">   {{post.commentsCount}}<i style="font-size:26px;" class="bi bi-chat mr-4" ></i></p>
                 </div>
                 
 
@@ -23,6 +58,8 @@
             </div>
           </div>
         </div>
+      </div>
+        
         
         
       </div>
@@ -34,26 +71,104 @@
   class="modal"
   tabindex="-1"
   role="dialog"
-  [ngStyle]="{'display':displayStyle}">
-  <div class="modal-dialog" role="document">
-    <div style="background-color: #212529; color: #FFF;" class="modal-content">
+  [ngStyle]="{'display':open}">
+  <div class="modal-dialog modal-lg " role="document">
+    <div  style="background-color: #212529; color: #FFF;" class="modal-content">
       <div  class="modal-header">
-        <h4  class="modal-title"> <img align="left" [src]="postUnico?.user?.profileImage | safe" class="mr-2" width="60px" >{{postUnico?.title}}</h4>
+        <div *ngIf="displayStyle === 'block'">
+          <h4  class="modal-title"> <img align="left" [src]="postUnico?.user?.profileImage | safe" class="mr-2" width="60px" >{{postUnico?.title}}</h4>
+        </div>
+        <div *ngIf="comentario === 'block'">
+          <h4  class="modal-title"> Comentar</h4>
+        </div>
+
+        <div *ngIf="iniciarPost === 'block'">
+          <h4  class="modal-title"> Iniciar projeto</h4>
+        </div>
+        
       </div>
       <div class="modal-body justify-content-center">
-        <p>{{postUnico?.description}}</p>
-        <div class="row d-flex justify-content-center align-items-center" *ngFor="let comment of postUnico?.comments; index as i;">
-          <h4><img align="left" [src]="comment?.userProfileImage | safe" class="mr-2" width="60px" > {{comment?.description}}</h4>
+        <div *ngIf="displayStyle === 'block'">
+          <div *ngIf="postUnico?.project !==null">
+            <h3>Resposta da prefeitura</h3>
+            <p><b>{{postUnico?.project.description}}</b></p>
+            <div class="col-12  mb-4 d-flex justify-content-center"><img *ngIf="postUnico?.project?.image !==null" style="max-width:100%; width: 400px; height: 400;" [src]="postUnico?.project?.image | safe"/></div>
+            
+
+            <h3>{{postUnico?.title}}</h3>
+          </div>
+
+          <p>{{postUnico?.description}}</p>
+
+          <div class="col-12  mb-4 d-flex justify-content-center"><img style="max-width:100%; width: 400px; height: 400;" [src]="postUnico?.image | safe"  ></div>
+
+          <div class="row d-flex justify-content-center align-items-center" *ngFor="let comment of postUnico?.comments; index as i;">
+            
+            <h4><img align="left" [src]="comment?.userProfileImage | safe" class="mr-2" width="30px" > {{comment?.description}}</h4>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
+        <div *ngIf="comentario === 'block'">
+          <form [formGroup]="formComentario" novalidate>
+            <mat-form-field appearance="outline" class="form-field-full col-12 mt-3">
+              <mat-label>Descrição</mat-label>
+              <textarea formControlName="description" rows="5" placeholder="Apareceu um buraco aqui no meio da minha rua" matInput></textarea>
+              <mat-error *ngIf="formComentario.get('description').hasError('description') && formComentario.get('description').touched">
+                <strong>Obrigatório</strong>
+              </mat-error>
+              
+              
+            </mat-form-field>
+            </form>
+          
+        </div>
+
+        <div *ngIf="iniciarPost === 'block'">
+          <form [formGroup]="formIniciar" novalidate>
+            <mat-form-field appearance="outline" class="form-field-full col-12 mt-3">
+              <mat-label>Descrição</mat-label>
+              <textarea formControlName="descriptionIniciar" rows="5" placeholder="Estamos resolvendo" matInput></textarea>
+              <mat-error *ngIf="formIniciar.get('descriptionIniciar').hasError('descriptionIniciar') && formIniciar.get('descriptionIniciar').touched">
+                <strong>Obrigatório</strong>
+              </mat-error>
+              
+            </mat-form-field>
+            <input formControlName="imageIniciar" #imageInput type="file" accept="image/*" (change)="processFile(imageInput)">
+          </form>
+        </div>
+
         
 
-        <button type="button" class="btn btn-danger" 
+
+      </div>
+      <div class="modal-footer">
+        <div *ngIf="displayStyle === 'block'">
+          <button type="button" class="btn btn-danger" 
                 (click)="closePopup()">
           Close
         </button>
+        </div>
+        <div *ngIf="comentario === 'block'">
+          <button type="button" class="btn btn-primary"    (click)="postar()">Postar </button>
+          <button type="button" class="btn btn-secondary"                 (click)="closeComentarioPopup()">          Close        </button>
+        
+        </div>
+       
+        <div *ngIf="iniciarPost === 'block'">
+          <button type="button" class="btn btn-primary"    (click)="salvar()">Salvar </button>
+          <button type="button" class="btn btn-secondary"                 (click)="closeIniciar()">          Close        </button>
+        
+        </div>
+
+        
       </div>
     </div>
+
+
+    
+
+
   </div>
 </div>
+
+
+

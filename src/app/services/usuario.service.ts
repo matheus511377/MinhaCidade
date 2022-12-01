@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IUsuario } from '../interfaces/IUsuario';
 
-const apiUrlUsuario = environment.apiUrl + "Usuario";
+
 
 @Injectable({
   providedIn: 'root'

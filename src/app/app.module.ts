@@ -21,6 +21,8 @@ import { TokenInterceptor } from './services/interceptors/token.interceptor';
 import { AppService } from './app.service';
 import { CadastrarUsuarioComponent } from './pages/login/cadastrar/cadastrarlogin.component';
 import { SafePipe } from './pages/home/safe.pipe';
+import { MinhasComponent } from './pages/minhas-solicitacoes/minhas.component';
+import { AdminComponent } from './pages/compartilhado/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { SafePipe } from './pages/home/safe.pipe';
     HomeComponent,
     PrincipalComponent,
     CadastrarUsuarioComponent,
-    SafePipe
+    SafePipe,
+    MinhasComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ import { SafePipe } from './pages/home/safe.pipe';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "login-completo-exemplo": {
+    "minha-cidade": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/login-completo-exemplo",
+            "outputPath": "dist/minha-cidade",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "login-completo-exemplo:build"
+            "browserTarget": "minha-cidade:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "login-completo-exemplo:build:production"
+              "browserTarget": "minha-cidade:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "login-completo-exemplo:build"
+            "browserTarget": "minha-cidade:build"
           }
         },
         "test": {
@@ -128,16 +128,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "login-completo-exemplo:serve"
+            "devServerTarget": "minha-cidade:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "login-completo-exemplo:serve:production"
+              "devServerTarget": "minha-cidade:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "login-completo-exemplo"
+  "defaultProject": "minha-cidade"
 }
